@@ -10,12 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button addButton;
     private EditText firstOperand;
     private EditText secondOperand;
+    private TextView sumTextView;
 
 
     @Override
@@ -37,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
         addButton = (Button) this.findViewById(R.id.button);
         firstOperand = (EditText) this.findViewById(R.id.first_operand);
         secondOperand = (EditText) this.findViewById(R.id.second_operand);
+        sumTextView = (TextView) this.findViewById(R.id.sum_text_view);
+        View.OnClickListener oclAddButton = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int sum = sum(Integer.parseInt(firstOperand.getText().toString()),
+                              Integer.parseInt(secondOperand.getText().toString()));
+                sumTextView.setText(Integer.toString(sum));
+            }
+        };
+
+        addButton.setOnClickListener(oclAddButton);
+
 
 
     }
